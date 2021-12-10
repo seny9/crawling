@@ -4,7 +4,8 @@ from datetime import datetime, timedelta
 from urllib.parse import quote_plus,unquote
 from bs4 import BeautifulSoup
 from selenium import webdriver
-#from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support.ui import WebDriverWait
 
 #파일이름 정해주는함수
 def convertFilename(orgnStr):
@@ -19,18 +20,27 @@ def convertFilename(orgnStr):
     return tmpStr.replace(" ", "_")
 
 
-#링크 클릭 후 html문서 txt파일에 저장함수
+#링크 클릭 후 html문서
 def Click_Pages(nodeHref, nodeTitle):
-        driver.get(nodeHref)    
-        driver.implicitly_wait(3)
-        clickHtml = driver.page_source
-        fileName = nodeTitle + '.html'
-        fileName = convertFilename(fileName)
-        html_file = open('/home/seny/crawling_href/' + fileName, 'w')
-        html_file.write(clickHtml)
-        html_file.close()
+    wait = WebDriverWait(driver, 5)
+    try: #가끔씩 뜨는 페이지 커넥션 타임아웃에러 처리
+        driver.get(nodeHref)
+        
+        
+        
+    except TimeoutException as ex:
+        print("Exception has been thrown. " + str(ex))
+        driver.close() #드라이버는 계속 써야되는데...
+            
+    driver.implicitly_wait(3)
+    clickHtml = driver.page_source
+    fileName = nodeTitle + '.html'
+    fileName = convertFilename(fileName)
+    html_file = open('/home/seny/crawling_href/' + fileName, 'w')
+    html_file.write(clickHtml)
+    html_file.close()
 
-#첫번째 페이지 제외하고 n째 페이지 html문서 txt저장함수
+#첫번째 페이지 제외하고 n째 페이지 html문서
 def Click_PagesN(nodeHref, nodeTitle):
     driverN.get(nodeHref)
     driverN.implicitly_wait(3)
@@ -49,7 +59,7 @@ def Save_info(dList):
     f = open('crawling{}.txt'.format(InfoFile), 'w', encoding="UTF-8")
     i = 0
     for i in range (0,len(dList)) :
-        f.write(dList[i]['nodeTitle'] + '\n' + dList[i]['nodeText'] + '\n' + dList[i]['nodeHref'] + '\n')
+        f.write(str(i+1) + ". " + dList[i]['nodeTitle'] + '\n' + dList[i]['nodeText'] + '\n' + dList[i]['nodeHref'] + '\n\n')
         i += 1
 
 
