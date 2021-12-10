@@ -1,11 +1,10 @@
-#제목, 내용, 링크 txt파일 구현
-#html파일저장 파일 구현
 from datetime import datetime, timedelta
 from urllib.parse import quote_plus,unquote
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 #파일이름 정해주는함수
 def convertFilename(orgnStr):
@@ -20,37 +19,23 @@ def convertFilename(orgnStr):
     return tmpStr.replace(" ", "_")
 
 
-#링크 클릭 후 html문서
+#링크 클릭 후 html파일 저장
 def Click_Pages(nodeHref, nodeTitle):
-    wait = WebDriverWait(driver, 5)
     try: #가끔씩 뜨는 페이지 커넥션 타임아웃에러 처리
         driver.get(nodeHref)
+        driver.set_page_load_timeout(10)
         
+    except TimeoutException:
+        print(nodeTitle + "페이지 로드 실패 ")
+        driver.back()
+    else:   
         
-        
-    except TimeoutException as ex:
-        print("Exception has been thrown. " + str(ex))
-        driver.close() #드라이버는 계속 써야되는데...
-            
-    driver.implicitly_wait(3)
-    clickHtml = driver.page_source
-    fileName = nodeTitle + '.html'
-    fileName = convertFilename(fileName)
-    html_file = open('/home/seny/crawling_href/' + fileName, 'w')
-    html_file.write(clickHtml)
-    html_file.close()
-
-#첫번째 페이지 제외하고 n째 페이지 html문서
-def Click_PagesN(nodeHref, nodeTitle):
-    driverN.get(nodeHref)
-    driverN.implicitly_wait(3)
-    clickHtml = driverN.page_source
-
-    fileName = nodeTitle + '.html'
-    fileName = convertFilename(fileName)
-    html_file = open('/home/seny/crawling_href/' + fileName, 'w')
-    html_file.write(clickHtml)
-    html_file.close()
+        clickHtml = driver.page_source
+        fileName = nodeTitle + '.html'
+        fileName = convertFilename(fileName)
+        html_file = open('/home/seny/crawling_href/' + fileName, 'w')
+        html_file.write(clickHtml)
+        html_file.close()
 
     
 #페이지 제목,내용,링크 crawling날짜.txt파일로 저장함수
@@ -71,7 +56,7 @@ date = str(t.month) + '/' + str(t.day) + '/' + str(t.year)
 dateurl = '&tbs=cdr:1,cd_min:' + date + ',cd_max:' + date
 plusUrl = input('검색어 입력 : ')
 
-url = baseUrl + quote_plus(plusUrl) + dateurl #https://www.google.com/search?q=%EC%9D%B4%EC%84%B8%EC%9D%80&tbs=cdr:1,cd_min:11/21/2021,cd_max:11/21/2021
+url = baseUrl + quote_plus(plusUrl) + dateurl
 
 
 options = webdriver.ChromeOptions()
@@ -81,15 +66,14 @@ options.add_argument("disable-gpu")
 driver = webdriver.Chrome(executable_path='/home/seny/chromedriver', options=options)
 driver.get(url)
 driver.implicitly_wait(3) #자바스크립트 돌아가는 시간
-
 html = driver.page_source
 soup = BeautifulSoup(html, features="html.parser")
 
+#driver.execute_script("window.open();")
+#driver.close() #활성화된 창만 닫음, selenium서비스가 메모리에 아직 상주, 재활용 가능
+#위 코드 실행 시 모든 브라우저가 닫히므로 셀레니움 이용불가
 
-driverN = webdriver.Chrome(executable_path='/home/seny/chromedriver', options=options) #두 번째 페이지부터 n페이지까지 쓰이는 드라이버
-nxtPageHref = None #그 다음 페이지 링크
-pageList = []
-nxtPage = " " #isspace()확인 하려면 공백한자리 필요
+pageList = [] #다음페이지들 링크 담아둘 리스트
 dList = [] #크롤링 검색 (제목, 내용, 링크)set 저장 list
 
 #쳣페이지에서 다음 페이지들 href리스트에 저장
@@ -100,19 +84,9 @@ for node in aList:
 
 
 while True:
-
-    
-    #첫번째 페이지 제외한 n페이지
-    if nxtPage.isspace() is False:
-        list = soupN.select('div.g')
-        IsFirstPage = False
         
-    else: #첫 페이지
-        list = soup.select('div.g')
-        IsFirstPage = True
-    
-    
     #페이지 크롤링
+    list = soup.select('div.g')
     
     for i in list:
         data = {} #dict
@@ -128,36 +102,34 @@ while True:
             
         try:
             nodeHref = unquote(i.a.attrs['href']) #주소
-        except AttributeError as e:
-            nodeHref = ''
+        except AttributeError as e: #링크가 none타입으로 나오는 경우 건너뜀
+            continue
         
         data['nodeTitle'] = nodeTitle
         data['nodeText'] = nodeText
         data['nodeHref'] = nodeHref
         dList.append(data)#dictionary list 저장
         
-        #html페이지 별도 폴더에 저장
-        if IsFirstPage is False:
-            Click_PagesN(nodeHref, nodeTitle)
-        else:
-            Click_Pages(nodeHref, nodeTitle)
-    
-    
         
-    if len(pageList)!= 0: #저장해둔 다음페이지리스트 로드
+    #다음페이지리스트 로드
+    if len(pageList)!= 0: 
         nxtPage = 'https://www.google.com' + pageList[0]
         del pageList[0] #주소 저장한 후 해당 주소 리스트에서 삭제
-        driverN.get(nxtPage)
-        driverN.implicitly_wait(3) #자바스크립트 돌아가는 시간
-        htmlN = driverN.page_source
-        soupN = BeautifulSoup(htmlN, features="html.parser")
+        driver.get(nxtPage)
+        driver.implicitly_wait(3) #자바스크립트 돌아가는 시간
+        html = driver.page_source
+        soup = BeautifulSoup(html, features="html.parser")
+        #driver.close() #탭 닫기
+        #driver.execute_script("window.open();") #새창 열어놓고
     
     else: #다음페이지 없으면 while문 break
         break
 
-
+#제목내용링크 txt파일에 저장
 Save_info(dList)
+#html페이지 별도 폴더에 저장
+for page in range(0, len(dList)):
+    Click_Pages(dList[page]['nodeHref'], dList[page]['nodeTitle'])
     
 
-driver.close()
-driverN.close()
+driver.quit()
