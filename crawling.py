@@ -1,12 +1,12 @@
+import os
 from datetime import datetime, timedelta
 from urllib.parse import quote_plus,unquote
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-#파일이름 정해주는함수
+#파일이름 정해주는 함수
 def convertFilename(orgnStr):
     restrictChars = "|\\\\?*<\":>/"
     regExpr = "[" + restrictChars + "]+"
@@ -19,7 +19,7 @@ def convertFilename(orgnStr):
     return tmpStr.replace(" ", "_")
 
 
-#링크 클릭 후 html파일 저장
+#링크 클릭 후 html파일 저장하는 함수
 def Click_Pages(nodeHref, nodeTitle):
     try: #가끔씩 뜨는 페이지 커넥션 타임아웃에러 처리
         driver.get(nodeHref)
@@ -27,21 +27,23 @@ def Click_Pages(nodeHref, nodeTitle):
         
     except TimeoutException:
         print(nodeTitle + "페이지 로드 실패 ")
-        driver.back()
+        driver.back() #페이지 로드 실패 경우 전페이지로 돌아가기
     else:   
-        
         clickHtml = driver.page_source
         fileName = nodeTitle + '.html'
         fileName = convertFilename(fileName)
-        html_file = open('/home/seny/crawling_href/' + fileName, 'w')
+        if not os.path.exists("crawling_html"): #크롤링html페이지들 저장할 폴더 없으면 만들기
+            os.mkdir("crawling_html")
+        html_file = open("./crawling_html/" + fileName, 'w')
         html_file.write(clickHtml)
         html_file.close()
 
     
-#페이지 제목,내용,링크 crawling날짜.txt파일로 저장함수
+#페이지 제목,내용,링크 txt파일 저장하는 함수
 def Save_info(dList):
     InfoFile = convertFilename(date)
-    f = open('crawling{}.txt'.format(InfoFile), 'w', encoding="UTF-8")
+    topic = convertFilename(plusUrl)
+    f = open('crawling{}.txt'.format(topic + InfoFile), 'w', encoding="UTF-8") #txt파일명을 "검색어 + 날짜"로 지정
     i = 0
     for i in range (0,len(dList)) :
         f.write(str(i+1) + ". " + dList[i]['nodeTitle'] + '\n' + dList[i]['nodeText'] + '\n' + dList[i]['nodeHref'] + '\n\n')

@@ -1,0 +1,677 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<script src="/statics/api/js/share.js?cdnversion=455433"></script></head><body>{seacms:load seo/cascade.html}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<link rel="shortcut icon" href="/statics/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="/statics/font/iconfont.css" type="text/css">
+<link rel="stylesheet" href="/statics/css/stui_block.css" type="text/css">
+<link rel="stylesheet" href="/statics/css/stui_block_color.css" type="text/css">
+<link rel="stylesheet" href="/statics/css/stui_default.css" type="text/css">
+<script type="text/javascript" src="/statics/js/jquery.min.js"></script>
+<script type="text/javascript" src="/statics/js/stui_default.js"></script>
+<script type="text/javascript" src="/statics/js/stui_block.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript" src="/js/function.js"></script>
+<script type="text/javascript">var sitePath='', siteUrl='https://yohutv.com'</script>
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+
+<![endif]-->
+
+
+
+<header class="stui-header__top clearfix top-fixed headroom--top headroom--not-bottom" id="header-top">
+	<div class="container">	
+		<div class="row">
+			<div class="stui-header_bd clearfix">					
+			    <div class="stui-header__logo">
+					<a class="logo" href="/index.html" style="background: url(&quot;/statics/img/logo.png&quot;) no-repeat;"></a>										  
+				</div>
+				<ul class="stui-header__menu">
+					<li class="hidden-xs"><a href="/index.html">首页</a></li>
+					<li>
+						<a href="javascript:;"><i class="icon iconfont icon-viewgallery"></i> 导航 <i class="icon iconfont icon-moreunfold"></i></a>
+						<ul class="dropdown">
+							<li><a href="/index.html">首页</a></li>
+							
+							<li>
+								<a href="/vodshow/1.html">  动作片</a>						
+							</li>						  
+							
+							<li>
+								<a href="/vodshow/2.html">  喜剧片</a>						
+							</li>						  
+							
+							<li>
+								<a href="/vodshow/3.html">  爱情片</a>						
+							</li>						  
+							
+							<li>
+								<a href="/vodshow/4.html">  科幻片</a>						
+							</li>						  
+							
+							<li>
+								<a href="/vodshow/5.html">  恐怖片</a>						
+							</li>						  
+							
+							<li>
+								<a href="/vodshow/6.html">  剧情片</a>						
+							</li>						  
+							
+							<li>
+								<a href="/vodshow/7.html">  战争片</a>						
+							</li>						  
+							
+							<li>
+								<a href="/vodshow/8.html">  纪录片</a>						
+							</li>						  
+							
+							<li>
+								<a href="/vodshow/9.html">  午夜片</a>						
+							</li>						  
+							
+							
+							<li><a href="/topic/index.html">专题</a></li>
+							<!--
+								<li><a href="/news.html">资讯</a></li>
+							-->
+						</ul>
+					</li>
+				</ul>			
+				<div class="stui-header__search"> 
+					<script type="text/javascript" src="/statics/js/autocomplete.js"></script>
+			        <form name="formsearch" id="formsearch" action="/search.php" method="get" autocomplete="off">																			
+						<input class="form-control" id="wd" placeholder="输入影片关键词..." name="searchword" type="text" required="">
+						<input type="submit" id="searchbutton" value="" class="hide">
+						<button class="submit" id="submit" onclick="$('#formsearch').submit();"><i class="icon iconfont icon-search"></i></button>
+					</form>
+					<a class="search-close visible-xs" href="javascript:;"><i class="icon iconfont icon-close"></i></a>
+					<div id="word" class="autocomplete-suggestions active" style="display: none;"></div>
+			    </div>
+			    
+				<ul class="stui-header__user">				
+					<li>
+						<a href="javascript:;"><i class="icon iconfont icon-clock"></i></a>
+						<div class="dropdown history">					
+							<h5 class="margin-0 text-muted">
+								<a class="historyclean text-muted pull-right" href="">清空</a>
+								播放记录
+							</h5>
+							<ul class="clearfix" id="stui_history">
+							<p style="padding: 80px 0; text-align: center">您还没有看过影片哦</p></ul>
+						</div>	
+					</li>
+					<li class="hidden-xs">
+						<a href="/gbook.php"><i class="icon iconfont icon-comments"></i></a>
+					</li>
+					<li class="visible-xs">
+						<a class="open-search" href="javascript:;"><i class="icon iconfont icon-search"></i></a>
+					</li>
+				</ul>		
+		  	</div>		
+		</div>	  							    
+	</div>
+</header>
+<script type="text/javascript">
+	$(".stui-header__user li,.stui-header__menu li").click(function(){
+		$(this).find(".dropdown").toggle();
+		$(".stui-player__iframe").toggle();
+	});
+	$(".open-search").click(function(){
+		var Seacrh=$(".stui-header__search");
+		Seacrh.addClass("active").siblings().hide();
+		Seacrh.find(".form-control").focus();
+		$(".search-close").click(function(){
+			Seacrh.removeClass("active").siblings().show();
+		});
+	});	
+	if(stui.browser.useragent.mobile){
+		$(".stui-header__logo .logo").css("background","url(/statics/img/logo_min.png) no-repeat");		
+	}else{
+		$(".stui-header__logo .logo").css("background","url(/statics/img/logo.png) no-repeat");
+	}
+</script>
+<div class="container">
+<div class="row">
+<script>document.write('<script src="/gg/top.js?_dc='+Math.floor(new Date().getTime()/3600000)+'"><\/script>')</script><script src="/gg/top.js?_dc=455434"></script>
+<div class="stui-pannel stui-pannel-bg clearfix">
+<div class="stui-pannel-box">
+<div class="stui-pannel_hd">
+<div class="stui-pannel__head active bottom-line clearfix">
+<h3 class="title">
+<img src="/statics/icon/icon_27.png">
+午夜片
+</h3>
+<ul class="nav nav-tabs pull-right">
+<li class=""><a href="https://yohutv.com/search.php?page=17&amp;searchtype=5&amp;order=time&amp;tid=9&amp;area=韩国&amp;year=&amp;letter=&amp;yuyan=&amp;state=&amp;money=&amp;ver=&amp;jq=">按时间</a></li>
+<li class=" active"><a href="https://yohutv.com/search.php?page=17&amp;searchtype=5&amp;order=hit&amp;tid=9&amp;area=韩国&amp;year=&amp;letter=&amp;yuyan=&amp;state=&amp;money=&amp;ver=&amp;jq=">按人气</a></li>
+<li class=""><a href="https://yohutv.com/search.php?page=17&amp;searchtype=5&amp;order=commend&amp;tid=9&amp;area=韩国&amp;year=&amp;letter=&amp;yuyan=&amp;state=&amp;money=&amp;ver=&amp;jq=">按推荐</a></li>
+</ul>
+</div>
+<ul class="stui-screen__list type-slide bottom-line-dot clearfix">
+<li>
+<span class="text-muted">按剧情</span>
+</li>
+
+</ul>
+<ul class="stui-screen__list type-slide bottom-line-dot clearfix">
+<li>
+<span class="text-muted">按地区</span>
+</li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=" title="全部">全部</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E5%A4%A7%E9%99%86" title="大陆">大陆</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%A6%99%E6%B8%AF" title="香港">香港</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E5%8F%B0%E6%B9%BE" title="台湾">台湾</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E6%97%A5%E6%9C%AC" title="日本">日本</a></li>
+
+<li class="active"><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD" title="韩国">韩国</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E6%AC%A7%E7%BE%8E" title="欧美">欧美</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E6%B3%B0%E5%9B%BD" title="泰国">泰国</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E5%85%B6%E4%BB%96" title="其他">其他</a></li>
+
+</ul>
+<ul class="stui-screen__list type-slide bottom-line-dot clearfix">
+<li>
+<span class="text-muted">按年份</span>
+</li>
+
+<li class="active"><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD" title="全部">全部</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;year=2020" title="2020">2020</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;year=2019" title="2019">2019</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;year=2018" title="2018">2018</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;year=2017" title="2017">2017</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;year=2016" title="2016">2016</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;year=2015" title="2015">2015</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;year=2014" title="2014">2014</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;year=2013" title="2013">2013</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;year=2012" title="2012">2012</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;year=2011" title="2011">2011</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;year=2010" title="2010">2010</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;year=more" title="more">more</a></li>
+
+</ul>
+<ul class="stui-screen__list type-slide bottom-line-dot clearfix">
+<li>
+<span class="text-muted">按语言</span>
+</li>
+
+<li class="active"><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD" title="全部">全部</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;yuyan=%E5%9B%BD%E8%AF%AD" title="国语">国语</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;yuyan=%E7%B2%A4%E8%AF%AD" title="粤语">粤语</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;yuyan=%E8%8B%B1%E8%AF%AD" title="英语">英语</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;yuyan=%E6%97%A5%E8%AF%AD" title="日语">日语</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;yuyan=%E9%9F%A9%E8%AF%AD" title="韩语">韩语</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;yuyan=%E6%B3%B0%E8%AF%AD" title="泰语">泰语</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;yuyan=%E6%B3%95%E8%AF%AD" title="法语">法语</a></li>
+
+</ul>
+<ul class="stui-screen__list letter-list type-slide clearfix">
+<li>
+<span class="text-muted">按字母</span>
+</li>
+
+<li class="active"><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD" title="全部">全部</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=A" title="A">A</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=B" title="B">B</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=C" title="C">C</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=D" title="D">D</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=E" title="E">E</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=F" title="F">F</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=G" title="G">G</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=H" title="H">H</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=I" title="I">I</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=J" title="J">J</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=K" title="K">K</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=L" title="L">L</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=M" title="M">M</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=N" title="N">N</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=O" title="O">O</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=P" title="P">P</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=Q" title="Q">Q</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=R" title="R">R</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=S" title="S">S</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=T" title="T">T</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=U" title="U">U</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=V" title="V">V</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=W" title="W">W</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=X" title="X">X</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=Y" title="Y">Y</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=Z" title="Z">Z</a></li>
+
+<li><a href="/search.php?searchtype=5&amp;order=hit&amp;tid=9&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD&amp;letter=0-9" title="0-9">0-9</a></li>
+
+</ul>
+</div>
+<div class="stui-pannel_bd">
+<ul class="stui-vodlist clearfix">
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/11198.html" title="朋友妻" data-original="http://tu.ckdy.net/uploads/allimg//200716/6b07c840eb7f78cc.jpg" style="background-image: url(&quot;http://tu.ckdy.net/uploads/allimg//200716/6b07c840eb7f78cc.jpg&quot;); opacity: 0.0931958;">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">HD</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/11198.html" title="朋友妻">朋友妻</a></h4>
+<p class="text text-overflow text-muted hidden-xs">朴银狐 Park Joo-bin / 图谋 Do Mo-se</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/14649.html" title="小岳母" data-original="http://tu.ckdy.net/uploads/allimg//200715/ce79ff1d20ca981d.jpg" style="background-image: url(&quot;http://tu.ckdy.net/uploads/allimg//200715/ce79ff1d20ca981d.jpg&quot;); opacity: 0.51178;">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">HD</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/14649.html" title="小岳母">小岳母</a></h4>
+<p class="text text-overflow text-muted hidden-xs">시아,진주,상두,제임스</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/16144.html" title="色即是空" data-original="http://tu.ckdy.net/uploads/allimg//200715/866096a183182878.jpg" style="background-image: url(&quot;http://tu.ckdy.net/uploads/allimg//200715/866096a183182878.jpg&quot;); opacity: 0.28711;">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">HD</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/16144.html" title="色即是空">色即是空</a></h4>
+<p class="text text-overflow text-muted hidden-xs">任昌丁,河智苑,崔成国,刘彩英</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/19473.html" title="小女孩偷窥美味" data-original="http://tu.ckdy.net/uploads/allimg//200715/f2d4ac6f8d5545c2.jpg" style="background-image: url(&quot;http://tu.ckdy.net/uploads/allimg//200715/f2d4ac6f8d5545c2.jpg&quot;); opacity: 0.0931958;">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">HD</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/19473.html" title="小女孩偷窥美味">小女孩偷窥美味</a></h4>
+<p class="text text-overflow text-muted hidden-xs">강예나 내용 작은</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/19721.html" title="深夜剧场" data-original="http://tu.ckdy.net/uploads/allimg//200715/2afe62ab6e420547.jpg" style="background-image: url(&quot;http://tu.ckdy.net/uploads/allimg//200715/2afe62ab6e420547.jpg&quot;); opacity: 0.51178;">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">HD</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/19721.html" title="深夜剧场">深夜剧场</a></h4>
+<p class="text text-overflow text-muted hidden-xs">Jang Yoon-i,Ahn So-hee,Lee Chae-dam</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/5359.html" title="新儿子" data-original="http://tu.ckdy.net/uploads/allimg//200716/7737d747724d2d42.jpg" style="background-image: url(&quot;http://tu.ckdy.net/uploads/allimg//200716/7737d747724d2d42.jpg&quot;); opacity: 0.0232729;">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">HD</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/5359.html" title="新儿子">新儿子</a></h4>
+<p class="text text-overflow text-muted hidden-xs">徐元 Seo Won-I / 시우 / 李恩美 Eun-mi Lee</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/6969.html" title="爱诱欲2005" data-original="http://tu.ckdy.net/uploads/allimg//200716/3a4691c949b32339.jpeg" style="background-image: url(&quot;http://tu.ckdy.net/uploads/allimg//200716/3a4691c949b32339.jpeg&quot;); opacity: 0.000986636;">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">BD</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/6969.html" title="爱诱欲2005">爱诱欲2005</a></h4>
+<p class="text text-overflow text-muted hidden-xs">赵东赫/成贤娥/李昌镛 </p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/8310.html" title="肚脐" data-original="http://tu.ckdy.net/uploads/allimg//200716/6e99b7166d268939.jpg" style="background-image: url(&quot;http://tu.ckdy.net/uploads/allimg//200716/6e99b7166d268939.jpg&quot;);">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">HD</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/8310.html" title="肚脐">肚脐</a></h4>
+<p class="text text-overflow text-muted hidden-xs">李美淑 千浩振 金孝珍</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/10033.html" title="一个好妈妈3" data-original="http://tu.ckdy.net/uploads/allimg//200716/c03b68f6a8c9aec8.jpg" style="background-image: url(&quot;http://tu.ckdy.net/uploads/allimg//200716/c03b68f6a8c9aec8.jpg&quot;); opacity: 0.000986636;">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">HD</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/10033.html" title="一个好妈妈3">一个好妈妈3</a></h4>
+<p class="text text-overflow text-muted hidden-xs">李采潭 Chae-dam Lee / 정연 / 申妍宇 Yeon-woo Sin</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/19032.html" title="背着丈夫" data-original="http://tu.ckdy.net/uploads/allimg//200715/26ed42f56437508d.jpg" style="background-image: url(&quot;http://tu.ckdy.net/uploads/allimg//200715/26ed42f56437508d.jpg&quot;); opacity: 0.00024672;">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">独家中文字幕</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/19032.html" title="背着丈夫">背着丈夫</a></h4>
+<p class="text text-overflow text-muted hidden-xs">최선미,황호상,이강탁</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/3100.html" title="发狂的现代史" data-original="http://tu.ckdy.net/uploads/allimg//200716/46bc0c22de65fa46.jpg" style="background-image: url(&quot;http://tu.ckdy.net/uploads/allimg//200716/46bc0c22de65fa46.jpg&quot;); opacity: 1.54212e-05;">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">HD</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/3100.html" title="发狂的现代史">发狂的现代史</a></h4>
+<p class="text text-overflow text-muted hidden-xs">Sang-won Lee,河珠熙 Ju-Hee Ha,郑多媛,Yoon Jung Shin</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/15455.html" title="猛男诞生记" data-original="http://tu.ckdy.net/uploads/allimg//200715/bd74a5e7efa4fb2f.jpg" style="background-image: url(&quot;http://tu.ckdy.net/uploads/allimg//200715/bd74a5e7efa4fb2f.jpg&quot;); opacity: 0.417907;">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">HD</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/15455.html" title="猛男诞生记">猛男诞生记</a></h4>
+<p class="text text-overflow text-muted hidden-xs">奉太奎,尹汝贞,金叡园,徐英</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/26252.html" title="隔壁的女孩" data-original="http://tu.ckdy.net/uploads/allimg//200715/f0e5d78632eed2ff.jpg" style="background-image: url(&quot;http://tu.ckdy.net/uploads/allimg//200715/f0e5d78632eed2ff.jpg&quot;);">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">中文字幕</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/26252.html" title="隔壁的女孩">隔壁的女孩</a></h4>
+<p class="text text-overflow text-muted hidden-xs">홍새희,하빈,최용준</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/2421.html" title="我的P.S.搭档" data-original="http://tu.ckdy.net/uploads/allimg//200716/e3d445f7c8081e9e.jpg" style="background-image: url(&quot;http://tu.ckdy.net/uploads/allimg//200716/e3d445f7c8081e9e.jpg&quot;); opacity: 0.28711;">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">BD</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/2421.html" title="我的P.S.搭档">我的P.S.搭..</a></h4>
+<p class="text text-overflow text-muted hidden-xs">金雅中,池晟,申素率,金圣武</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/6255.html" title="跟踪狂1/2" data-original="http://tu.ckdy.net/uploads/allimg//200716/d47336727543d5e5.jpg" style="background-image: url(&quot;http://tu.ckdy.net/uploads/allimg//200716/d47336727543d5e5.jpg&quot;); opacity: 0.0842652;">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">HD</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/6255.html" title="跟踪狂1/2">跟踪狂1/2</a></h4>
+<p class="text text-overflow text-muted hidden-xs">정윤 / 申妍宇 Yeon-woo Sin / 강재희</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/10169.html" title="大学生出差服务" data-original="http://tu.ckdy.net/uploads/allimg//200716/717b580106e28733.jpg" style="background-image: url(&quot;http://tu.ckdy.net/uploads/allimg//200716/717b580106e28733.jpg&quot;);">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">HD</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/10169.html" title="大学生出差服务">大学生出差服务</a></h4>
+<p class="text text-overflow text-muted hidden-xs">刘雪英 Sul-young Yoo / 조민정 / 조완진</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/12991.html" title="你的性伙伴" data-original="http://tu.ckdy.net/uploads/allimg//200716/0df2eaca649c8927.jpg" style="background-image: url(&quot;http://tu.ckdy.net/uploads/allimg//200716/0df2eaca649c8927.jpg&quot;); opacity: 0.0842652;">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">HD</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/12991.html" title="你的性伙伴">你的性伙伴</a></h4>
+<p class="text text-overflow text-muted hidden-xs">윤지</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/18580.html" title="外出2" data-original="http://tu.ckdy.net/uploads/allimg//200715/9a5a051102cd2b25.jpg" style="background-image: url(&quot;http://tu.ckdy.net/uploads/allimg//200715/9a5a051102cd2b25.jpg&quot;); opacity: 0.0599684;">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">HD</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/18580.html" title="外出2">外出2</a></h4>
+<p class="text text-overflow text-muted hidden-xs">김인애,최우석,박은진,한석봉</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/27125.html" title="玉蒲团之淫行天下" data-original="http://tu.ckdy.net/uploads/allimg//200715/aa63e7fd7740510c.jpg">
+<span class="play hidden-xs"></span>
+
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/27125.html" title="玉蒲团之淫行天下">玉蒲团之淫行天..</a></h4>
+<p class="text text-overflow text-muted hidden-xs">潘震伟,陈国权,姜皓文,八两金,宝生奈奈,泽田舞香,王书麒,刘月好</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/1996.html" title="已婚妇女：换夫" data-original="http://tu.ckdy.net/uploads/allimg//200716/6f1727c4d4318609.jpg">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">HD</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/1996.html" title="已婚妇女：换夫">已婚妇女：换夫</a></h4>
+<p class="text text-overflow text-muted hidden-xs">闵度允 Doyun Min / 서아 / 효원</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/2229.html" title="美人图2008" data-original="http://tu.ckdy.net/uploads/allimg//200716/d6853d41047eb18f.jpg">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">HD</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/2229.html" title="美人图2008">美人图2008</a></h4>
+<p class="text text-overflow text-muted hidden-xs">金圭丽,金英浩,秋瓷炫,金南佶</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/9438.html" title="年轻的小姐2019" data-original="http://tu.ckdy.net/uploads/allimg//200716/6966a4c74ed835cd.jpg">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">HD</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/9438.html" title="年轻的小姐2019">年轻的小姐20..</a></h4>
+<p class="text text-overflow text-muted hidden-xs">闵度允 Doyun Min / 李采潭 Chae-dam Lee / 희진 / 전에녹</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/10299.html" title="大胸妈妈" data-original="http://tu.ckdy.net/uploads/allimg//200716/afd7a0c748e80d47.jpg">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">HD</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/10299.html" title="大胸妈妈">大胸妈妈</a></h4>
+<p class="text text-overflow text-muted hidden-xs">申妍宇 Yeon-woo Sin / 李恩美 Eun-mi Lee / 엄기영 / 金珠 Joo Jin / 이세은</p>
+</div>
+</div>
+</li>
+
+<li class="col-md-6 col-sm-4 col-xs-3">
+<div class="stui-vodlist__box">
+<a class="stui-vodlist__thumb lazyload" href="/voddetail/12057.html" title="女儿的朋友3" data-original="http://tu.ckdy.net/uploads/allimg//200716/35c994b5f3727ad6.jpg">
+<span class="play hidden-xs"></span>
+<span class="pic-text text-right">HD</span>
+</a>
+<div class="stui-vodlist__detail">
+<h4 class="title text-overflow"><a href="/voddetail/12057.html" title="女儿的朋友3">女儿的朋友3</a></h4>
+<p class="text text-overflow text-muted hidden-xs">이지혜 / 김초희</p>
+</div>
+</div>
+</li>
+
+</ul>
+</div>
+</div>
+</div>
+<ul class="stui-page text-center clearfix">
+<li><a href="?page=1&amp;searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD">首页</a></li>
+<li><a href="?page=16&amp;searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD">上一页</a></li>
+
+<li class="hidden-xs "><a href="?page=14&amp;searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD">14</a></li>
+
+<li class="hidden-xs "><a href="?page=15&amp;searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD">15</a></li>
+
+<li class="hidden-xs "><a href="?page=16&amp;searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD">16</a></li>
+
+<li class="hidden-xs active"><a href="?page=17&amp;searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD">17</a></li>
+
+<li class="hidden-xs "><a href="?page=18&amp;searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD">18</a></li>
+
+<li class="hidden-xs "><a href="?page=19&amp;searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD">19</a></li>
+
+<li class="active visible-xs"><span class="num">17/31</span></li>
+<li><a href="?page=18&amp;searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD">下一页</a></li>
+<li><a href="?page=31&amp;searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD">尾页</a></li>
+</ul>
+</div>
+</div>
+﻿<div class="container">
+<div class="row">
+<div class="stui-foot clearfix">
+
+<p class="share bdsharebuttonbox text-center margin-0 hidden-sm hidden-xs"><span class="bds_shere"></span><a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a class="bds_bdhome" data-cmd="bdhome" title="分享到百度新首页"></a><a class="bds_tqf" data-cmd="tqf" title="分享到腾讯朋友"></a><a class="bds_youdao" data-cmd="youdao" title="分享到有道云笔记"></a><a class="bds_more" data-cmd="more" title="更多"></a></p>
+<center> Copyright ©2018<a href="/"><b><font color="#FF6600">优狐影视</font></b></a> <a href="/"><b><font color="#FF6600">https://yohutv.com</font></b></a> All Rights Reserved ·</center>
+<center>优狐影视不提供任何视听上传服务，韩国三级片大全所有内容均来自视频分享站点所提供的公开引用资源。</center>
+<div class="col-pd text-center hidden-xs">Copyright © 2015-2020  All Rights Reserved</div>
+</div>
+</div>
+</div>
+<ul class="stui-extra clearfix">
+<li>
+<a class="backtop" href="javascript:scroll(0,0)" style="display: none;"><i class="icon iconfont icon-less"></i></a>
+</li>
+<li class="hidden-xs">
+<a class="copylink" href="javascript:;"><i class="icon iconfont icon-share"></i></a>
+</li>
+<li class="visible-xs">
+<a class="open-share" href="javascript:;"><i class="icon iconfont icon-share"></i></a>
+</li>
+<li class="hidden-xs">
+<span><i class="icon iconfont icon-qrcode"></i></span>
+<div class="sideslip">
+<div class="col-pd">
+<p id="qrcode" title="https://yohutv.com/search.php?page=17&amp;searchtype=5&amp;order=hit&amp;tid=9&amp;letter=&amp;state=&amp;money=&amp;ver=&amp;jq=&amp;area=%E9%9F%A9%E5%9B%BD"><canvas width="150" height="150" style="display: none;"></canvas><img class="img-responsive" src="data:image/png;base64,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" style="display: inline-block;"></p>
+<p class="text-center font-12">扫码用手机访问</p>
+</div>
+</div>
+</li>
+<li>
+<a href="/gbook.php"><i class="icon iconfont icon-comments"></i></a>
+</li>
+</ul>
+<div class="hide"></div>
+
+</body></html>
